@@ -7,27 +7,27 @@ protected:
 	int m;
 	float* data;
 public:
-     Проблема утечки памяти(оператор копирования)
-	 Деструктор
-w	AbstractMatrix();
-w	AbstractMatrix(int m, int n);
-w	virtual AbstractMatrix& operator+(const AbstractMatrix&)=0;
-w	virtual AbstractMatrix& operator*(const AbstractMatrix&)=0;
-w	virtual AbstractMatrix& operator*(const float&)=0;
-w	virtual AbstractMatrix& operator-(const AbstractMatrix&)=0;
-w	virtual AbstractMatrix& reverse()=0;
-w	virtual AbstractMatrix& transpose()=0;
-w	virtual float determinant()=0;
-w	virtual ostream& print(ostream& o)=0;
-	virtual istream& read(istream& o)=0;
-w	virtual void set(int i, int j, float data)=0;
-w	virtual float get(int i, int j)=0;
-w	virtual int getN()=0;
-w	virtual int getM()=0;
-	virtual bool failed()=0;
+ w    РџСЂРѕР±Р»РµРјР° СѓС‚РµС‡РєРё РїР°РјСЏС‚Рё(РѕРїРµСЂР°С‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ)
+w	 Р”РµСЃС‚СЂСѓРєС‚РѕСЂ(СЂРµС€РµРЅР° СѓР±РёСЂР°РЅРёРµРј  &. РўРµРїРµСЂСЊ РІРѕР·СЂР°С‰Р°РµРј РѕР±СЉРµРєС‚ РјР°С‚СЂРёС†С‹)
+w	Matrix();
+w	Matrix(int m, int n);
+w	virtual Matrix operator+( Matrix&);
+w	virtual Matrix operator*( Matrix&);
+w	virtual Matrix operator*( float&);
+w	virtual Matrix operator-( Matrix&);
+w	virtual Matrix reverse();
+w	virtual Matrix transpose();
+w	virtual float determinant();
+w	virtual ostream& print(ostream& o);
+	virtual istream& read(istream& o);
+w	virtual void set(int i, int j, float data);
+w	virtual float get(int i, int j);
+w	virtual int getN();
+w	virtual int getM();
+w	virtual bool failed();
 };
 
-AbstractMatrix* get_init()
+Matrix* get_init()
 {
 	return NULL;
 }*/
@@ -38,90 +38,87 @@ class Matrix
 	int m;
 	float* data;
 public:
-	Matrix& operator+(const Matrix& res)
+
+	Matrix operator+( Matrix& res)
 	{
 
 		if(res.m!=m||res.n!=n)
 		{
 			 cout<<"Error in size of matrixs."<<endl;
-			Matrix*tmp=new Matrix;
-			tmp->data[0]=0;
-			return *tmp;
+			Matrix tmp;
+			tmp.data[0]=0;
+			return tmp;
 		}
 
-		Matrix* tmp=new Matrix;
-		tmp->m=this->m;
-		tmp->n=this->n;
-		tmp->data=new float[n*m];
+		Matrix tmp;
+		tmp.m=this->m;
+		tmp.n=this->n;
+		tmp.data=new float[n*m];
 
 		for(int i=0; i<(n*m); i++)
 		{
-			tmp->data[i]=data[i]+res.data[i];
+			tmp.data[i]=data[i]+res.data[i];
 
 
 		}
-		return *tmp;
+		return tmp;
 	}
-	Matrix& operator-(const Matrix& res)
+	Matrix operator-( Matrix& res)
 	{
 
 		if(res.m!=m||res.n!=n)
 		{
 			 cout<<"Error in size of matrixs."<<endl;
-			Matrix*tmp=new Matrix;
-			tmp->data[0]=0;
-			return *tmp;
+			Matrix tmp;
+			tmp.data[0]=0;
+			return tmp;
 		}
 
-		Matrix* tmp=new Matrix;
-		tmp->m=this->m;
-		tmp->n=this->n;
-		tmp->data=new float[n*m];
+		Matrix tmp;
+		tmp.m=this->m;
+		tmp.n=this->n;
+		tmp.data=new float[n*m];
 
 		for(int i=0; i<(n*m); i++)
 		{
-			tmp->data[i]=data[i]-res.data[i];
+			tmp.data[i]=data[i]-res.data[i];
 
 
 		}
-		return *tmp;
+		return tmp;
 	}
-	Matrix& operator*(float value)
+	Matrix operator*(float value)
 	{
-		Matrix* res=new Matrix;
-		float*c=new float[n*m];
-		res->m=this->m;
-		res->n=this->n;
-
-		res->data=c;
-
+		Matrix res;
+		res.data=new float[n*m];
+		res.m=this->m;
+		res.n=this->n;
 		int i=0;
 		while(i!=(n*m))
 		{
-			res->data[i]=value*this->data[i];
+			res.data[i]=value*this->data[i];
 
 			i++;
 		}
-		delete[] data;
-		return *res;
+		return res;
 
 	}
-     Matrix& operator*(const Matrix& res)
+     Matrix operator*(Matrix& res)
 	 {
 		 if(this->m!=res.n)
 		 {
 			 cout<<"Error in size of matrixs."<<endl;
-			 Matrix* tmp2=new Matrix;
-			 tmp2->data[0]=0;
-			 return *tmp2;
+			 Matrix tmp;
+			 tmp.data[0]=0;
+			 return tmp;
 		 }
 		 float z=0;
 		 int e=1; int d=1;
-		 Matrix* tmp=new Matrix;
+		 Matrix tmp;
 		 int h;
-		 tmp->data=new float[this->n*res.m];
-		 tmp->n=this->n;
-		 tmp->m=res.m;
+		 tmp.data=new float[this->n*res.m];
+		 tmp.n=this->n;
+		 tmp.m=res.m;
 		 int i=0;
 		 while(e!=this->n+1 && d!=res.m+1)
 		 {
@@ -130,13 +127,10 @@ public:
 			 while(h!=res.n+1)
 			 {
 				 z=z+data[(((e-1)*n+h)-1)]*(res.data[(((h-1)*res.m+d)-1)]);
-				 //cout<<"1first"<<res.data[(((h-1)*res.m+d)-1)]<<endl;
-				 //cout<<z<<endl;
 				 h++;
 
 			 }
-			 //cout<<z<<endl;
-			 tmp->data[i]=z;
+			 tmp.data[i]=z;
 			 i++;
 			 d++;
 			 if(d>res.m)
@@ -146,25 +140,23 @@ public:
 			 }
 
 		 }
-		 return *tmp;
+		
+		 return Matrix(tmp);
 
 	 }
-	Matrix& transpose()
+	Matrix transpose()
 	{
 		
-		Matrix* res=new Matrix;
-		float*c=new float[n*m];
-		res->m=this->m;
-		res->n=this->n;
-
-		res->data=c;
-
+		Matrix res;
+		res.data=new float[n*m];
+		res.m=this->m;
+		res.n=this->n;
 		int a1,a2;
 		a1=1;
 		a2=1;
 		while(a1!=n+1 && a2!=m+1)
 		{
-			res->data[(((a1-1)*n+a2)-1)]=this->data[(((a2-1)*m+a1)-1)];
+			res.data[(((a1-1)*n+a2)-1)]=this->data[(((a2-1)*m+a1)-1)];
 
 				a2++;
 				if(a2>n)
@@ -176,14 +168,13 @@ public:
 	
 	
 	
-		return *res;
+		return res;
 	}
 	Matrix()
 	{
-		data=new float;
-		data[0]=1;
-		this->m=1;
-		this->n=1;
+		this->n=0;
+		this->m=0;
+		this->data=NULL;
 	}
 	Matrix(int n, int m)
 	{
@@ -195,8 +186,7 @@ public:
 		while(i!=(n*m))
 		{
 			float a;
-			a=rand()%34;
-			//cin>>a;
+			a=1;
 
 			data[i]=a;
 			i++;
@@ -204,15 +194,40 @@ public:
 
 
 	}
-	/*Matrix(const Matrix& a)
+	Matrix(const Matrix& a)
 	{
+		this->m=a.m;
+		this->n=a.n;
+		data=new float[n*m];
+		int i=0;
+		while(i!=n*m)
+		{
+			this->data[i]=a.data[i];
+			i++;
+		}
 	
 
-	}*/
+	}
+	Matrix operator=(Matrix& a)
+	{
+		delete data;
+		this->m=a.m;
+		this->m=a.n;
+		this->data=new float[a.n*a.m];
+		int i=0;
+		while(i!=n*m)
+		{
+			this->data[i]=a.data[i];
+			i++;
+
+		}
+		return (*this);
+	}
 	~Matrix()
 	{
-		cout<<"deconstr"<<endl;
-		delete[] data;
+
+		//cout<<"deconstr"<<endl;
+		delete this->data;
 
 	}
 	float determinant()
@@ -238,8 +253,7 @@ public:
 		{
 
 			Matrix a;
-			float*c=new float[(n-1)*(m-1)];
-			a.data=c;
+			a.data=new float[(n-1)*(m-1)];
 			a.m=m-1;
 			a.n=n-1;
 			int a1=1;
@@ -272,22 +286,22 @@ public:
 			}
 			D=D+a4*data[(((c1-1)*n+c2)-1)]*a.determinant();
 			c2++;
-			//delete c;
+		
 		}
 		return D;
 	}
-	Matrix& reverse()
+	Matrix reverse()
 	{
 
 	
 		float x=0;
 		
-		Matrix* b=new Matrix;
+		Matrix b;
 		if(n!=m)
 		{
-			b->data[0]=0;
+			b.data[0]=0;
 			cout<<"It is impossible.This matrix is not backwards"<<endl;
-			return *b;
+			return b;
 		}
 		if(n==2)
 		{
@@ -297,39 +311,38 @@ public:
 			x=b1-b2;
 			if(x==0)
 			{
-				b->data[0]=0;
+				b.data[0]=0;
 				cout<<"It is impossible.This matrix is not backwards"<<endl;
-				return *b;
+				return b;
 			}
 			
-			b->data=new float[4];
-			b->m=2;
-			b->n=2;
-			b->data[0]=this->data[3];
-			b->data[3]=this->data[0];
-			b->data[1]=-this->data[1];
-			b->data[2]=-this->data[2];
+			b.data=new float[4];
+			b.m=2;
+			b.n=2;
+			b.data[0]=this->data[3];
+			b.data[3]=this->data[0];
+			b.data[1]=-this->data[1];
+			b.data[2]=-this->data[2];
 			
 
-			*b=*b*(1/x);
-			return *b;
+			b=b*(1/x);
+			return b;
 		
 
 
 
 		}
-			float*d=new float[n*m];
-			b->data=d;
-			b->m=m;
-			b->n=n;
+			
+			b.data=new float[n*m];
+			b.m=m;
+			b.n=n;
 		
 
 		int c1=1; int c2=1;
 		while(c2!=m+1 && c1!=n+1)
 		{
 			Matrix a;
-			float*c=new float[(n-1)*(m-1)];
-			a.data=c;
+			a.data=new float[(n-1)*(m-1)];
 			a.m=m-1;
 			a.n=n-1;
 			int a1=1;
@@ -363,7 +376,7 @@ public:
 			}
 
 			x=x+a4*data[(((c1-1)*n+c2)-1)]*a.determinant();
-			b->data[(((c2-1)*n+c1)-1)]=a4*a.determinant();
+			b.data[(((c2-1)*n+c1)-1)]=a4*a.determinant();
 			c2++;
 				if(c2>m)
 				{
@@ -371,34 +384,28 @@ public:
 					c2=1;
 				}
 				
-			//delete c;
+		
 		}
-		//Matrix* f=new Matrix;
-		//f=&b->reverse();
+		
 		x=x/3;
 		if(x==0)
 		{
-			delete b;
-			Matrix *k=new Matrix;
-			k->data[0]=0;
+			Matrix k;
+			k.data[0]=0;
 			cout<<"It is impossible.This matrix is not backwards"<<endl;
-			return *k;
+			return k;
 
 
 		}
-		*b=*b*(1/x);
+		b=b*(1/x);
 		cout<<x<<endl;
-		return *b;
+		return b;
 
 
 	}
 	float get(int i, int j)
 	{
-		float d;
-		d=data[(((i-1)*m+j)-1)];
-		return d;
-
-
+		return data[(((i-1)*m+j)-1)];
 	}
 	void set(int i, int j,float data)
 	{
@@ -437,61 +444,61 @@ public:
 	return o;
 
 	}
+	istream& read(istream& o)
+	{
+		cout<<"Size of matrix."<<endl;
+		cout<<"n=";
+		o>>this->n;
+		cout<<"m=";
+		o>>this->m;
+		data=new float[n*m];
+		int i=0;
+		cout<<"Insert data."<<endl;
+		while(i!=n*m)
+		{
+			float a;
+			o>>a;
+			data[i]=a;
+			i++;
+		}
+		return o;
+	}
+	virtual bool failed()
+	{
+		bool a=false;
+		if(n==0)
+		{
+			a=true;
+		}
+		if(m==0)
+		{
+			a=true;
+		}
+		if(data==NULL)
+		{
+			a=true;
+		}
 
-friend void print(Matrix& a);
+		return a;
+	}
+
 
 
 
 };
-
-void print(Matrix& a)
+/*Matrix* get_init()
 {
-	int i=0;
-	while(i!=(a.n*a.m))
-	{
-		if(i % a.m != 0)
-			cout<<"    "<<a.data[i]<<"\t";
-		else
-			cout<<"\n"<<a.data[i];
-
-		i++;
-	}
-	cout<<"\n";
-	i=0;
-	while(i!=a.m)
-	{
-	cout<<"\\\\\\\\\\\\";
-	i++;
-	}
-	cout<<"\n";
-}
+	return NULL;
+}*/
 
 
 void main()
 {
 	
-	Matrix one(3,4);
-	print(one);
-	float d;
-	one.print(cout);
-	
-	//float D;
-	/*while(true)
-	{
-		Matrix one(3,3);
-	one=one*2;
-	}*/
+	Matrix a(2,2);
+	Matrix c(2,2);
+	while(true)
+	Matrix b=a+c;
 
-	/*print(one);
-	Matrix two(3,3);
-	print(two);
-	Matrix res=one-two;
-	print(res);*/
-	
-	//one=one.reverse();
-	//print(one);
-	//D=one.determinant();
-	
-	//cout<<"\t"<<D<<endl;
 	
 }
