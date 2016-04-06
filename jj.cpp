@@ -469,6 +469,7 @@ public:
 	}
 	istream& read(istream& o)
 	{
+		delete data;
 		cout<<"Size of matrix."<<endl;
 		cout<<"n=";
 		o>>this->n;
