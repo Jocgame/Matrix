@@ -490,15 +490,3 @@ Matrix* get_init(int m,int n)
 {
 	return new Matrix(m,n);
 }
-
-
-void main()
-{
-	
-	Matrix a(2,2);
-	Matrix c(2,2);
-	while(true)
-	Matrix b=a+c;
-
-	
-}
