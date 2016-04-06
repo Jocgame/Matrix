@@ -1,8 +1,1 @@
-[==========] Running 7 tests from 1 test case.
-[----------] Global test environment set-up.
-[----------] 7 tests from MatrixTest
-[ RUN      ] MatrixTest.GetNM
-[       OK ] MatrixTest.GetNM
-[ RUN      ] MatrixTest.Reverse
-FAIL
-Segmentation fault. Program terminated!
+./check.sh: line 5: ./alexandr/jj.cpp.out: No such file or directory
