@@ -299,7 +299,7 @@ public:
 		Matrix b;
 		if(n!=m)
 		{
-			b.data[0]=0;
+			
 			cout<<"It is impossible.This matrix is not backwards"<<endl;
 			return b;
 		}
@@ -311,7 +311,7 @@ public:
 			x=b1-b2;
 			if(x==0)
 			{
-				b.data[0]=0;
+				
 				cout<<"It is impossible.This matrix is not backwards"<<endl;
 				return b;
 			}
@@ -391,7 +391,7 @@ public:
 		if(x==0)
 		{
 			Matrix k;
-			k.data[0]=0;
+			
 			cout<<"It is impossible.This matrix is not backwards"<<endl;
 			return k;
 
