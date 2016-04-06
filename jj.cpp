@@ -208,7 +208,7 @@ public:
 	
 
 	}
-	Matrix operator=(Matrix& a)
+	Matrix& operator=(const Matrix& a)
 	{
 		delete data;
 		this->m=a.m;
@@ -486,10 +486,10 @@ public:
 
 
 };
-/*Matrix* get_init()
+Matrix* get_init(int m,int n)
 {
-	return NULL;
-}*/
+	return new Matrix(m,n);
+}
 
 
 void main()
