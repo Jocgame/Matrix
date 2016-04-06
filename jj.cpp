@@ -300,7 +300,7 @@ public:
 		if(n!=m)
 		{
 			
-			cout<<"It is impossible.This matrix is not backwards"<<endl;
+			cout<<"It is impossible.This matrix is not backwards1"<<endl;
 			return b;
 		}
 		if(n==2)
@@ -312,7 +312,7 @@ public:
 			if(x==0)
 			{
 				
-				cout<<"It is impossible.This matrix is not backwards"<<endl;
+				cout<<"It is impossible.This matrix is not backwards2"<<endl;
 				return b;
 			}
 			
@@ -387,12 +387,12 @@ public:
 		
 		}
 		
-		x=x/3;
+		x=x/n;
 		if(x==0)
 		{
 			Matrix k;
 			
-			cout<<"It is impossible.This matrix is not backwards"<<endl;
+			cout<<"It is impossible.This matrix is not backwards3"<<endl;
 			return k;
 
 
