@@ -4,7 +4,7 @@
 [ RUN      ] MatrixTest.GetNM
 [       OK ] MatrixTest.GetNM
 [ RUN      ] MatrixTest.Reverse
-1
+It is impossible.This matrix is not backwards
 cur.cpp:62: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 0
@@ -12,56 +12,46 @@ Expected: (int)(i == j)
 Which is: 1
 cur.cpp:62: Failure
 Value of: (int)(c.get(i,j)+0.5)
-  Actual: -2147483648
+  Actual: 0
 Expected: (int)(i == j)
-Which is: 0
+Which is: 1
 cur.cpp:62: Failure
 Value of: (int)(c.get(i,j)+0.5)
-  Actual: -2147483648
+  Actual: 0
 Expected: (int)(i == j)
-Which is: 0
+Which is: 1
+cur.cpp:62: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(i == j)
+Which is: 1
+cur.cpp:62: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 0
+Expected: (int)(i == j)
+Which is: 1
 [  FAILED  ] MatrixTest.Reverse
 [ RUN      ] MatrixTest.Transpose
 cur.cpp:80: Failure
 Value of: (int)(c.get(i,j)+0.5)
-  Actual: 0
+  Actual: 1
+Expected: (int)(i + j)
+Which is: 0
+cur.cpp:80: Failure
+Value of: (int)(c.get(i,j)+0.5)
+  Actual: 1
 Expected: (int)(i + j)
 Which is: 2
 cur.cpp:80: Failure
 Value of: (int)(c.get(i,j)+0.5)
-  Actual: 0
-Expected: (int)(i + j)
-Which is: 1
-cur.cpp:80: Failure
-Value of: (int)(c.get(i,j)+0.5)
-  Actual: 3
+  Actual: 1
 Expected: (int)(i + j)
 Which is: 2
 cur.cpp:80: Failure
 Value of: (int)(c.get(i,j)+0.5)
-  Actual: 4
+  Actual: 1
 Expected: (int)(i + j)
 Which is: 3
-cur.cpp:80: Failure
-Value of: (int)(c.get(i,j)+0.5)
-  Actual: 0
-Expected: (int)(i + j)
-Which is: 4
-cur.cpp:80: Failure
-Value of: (int)(c.get(i,j)+0.5)
-  Actual: 5
-Expected: (int)(i + j)
-Which is: 3
-cur.cpp:80: Failure
-Value of: (int)(c.get(i,j)+0.5)
-  Actual: 0
-Expected: (int)(i + j)
-Which is: 4
-cur.cpp:80: Failure
-Value of: (int)(c.get(i,j)+0.5)
-  Actual: 0
-Expected: (int)(i + j)
-Which is: 5
 [  FAILED  ] MatrixTest.Transpose
 [ RUN      ] MatrixTest.SetGet
 [       OK ] MatrixTest.SetGet
@@ -109,6 +99,10 @@ Which is: 4
 [ RUN      ] MatrixTest.Determinant
 cur.cpp:125: Failure
 Value of: abs((int)(m->determinant())) < 0.001
+  Actual: false
+Expected: true
+cur.cpp:135: Failure
+Value of: abs((int)(m->determinant() - 1)) < 0.001
   Actual: false
 Expected: true
 [  FAILED  ] MatrixTest.Determinant
