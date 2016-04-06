@@ -145,28 +145,16 @@ public:
 	 }
 	Matrix transpose()
 	{
-		
 		Matrix res;
-		res.data=new float[n*m];
-		res.m=this->m;
-		res.n=this->n;
-		int a1,a2;
-		a1=1;
-		a2=1;
-		while(a1!=n+1 && a2!=m+1)
-		{
-			res.data[(((a1-1)*n+a2)-1)]=this->data[(((a2-1)*m+a1)-1)];
+		res.data = new float[n*m];
+		
+		res.n = this->m; res.m = this->n;
 
-				a2++;
-				if(a2>n)
-				{
-					a1++;
-					a2=1;
-				}
-		}
-	
-	
-	
+		for (int i = 0; i < n; i++)
+			for (int j = 0; j < m; j++)
+				res.data[j*n + i] = this->data[i*m + j];
+		
+		
 		return res;
 	}
 	Matrix()
@@ -175,7 +163,7 @@ public:
 		this->m=0;
 		this->data=NULL;
 	}
-	/*Matrix(int n, int m)
+	Matrix(int n, int m)
 	{
 		this->n=n;
 		this->m=m;
@@ -192,8 +180,8 @@ public:
 		}
 
 
-	}*/
-	Matrix(int n, int m)
+	}
+	/*Matrix(int n, int m)
 	{
 		this->n=n;
 		this->m=m;
@@ -216,7 +204,7 @@ public:
 		}
 
 
-	}
+	}*/
 	Matrix(const Matrix& a)
 	{
 		this->m=a.m;
@@ -527,4 +515,13 @@ Matrix* get_init(int n,int m)
 }
 
 
+void main()
+{
+	
+Matrix a(2,3);
+Matrix b=a.transpose();
+a.print(cout);
 
+b.print(cout);
+	
+}
