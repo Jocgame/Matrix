@@ -26,7 +26,6 @@ w	virtual int getN();
 w	virtual int getM();
 w	virtual bool failed();
 };
-
 Matrix* get_init()
 {
 	return NULL;
@@ -176,7 +175,7 @@ public:
 		this->m=0;
 		this->data=NULL;
 	}
-	Matrix(int n, int m)
+	/*Matrix(int n, int m)
 	{
 		this->n=n;
 		this->m=m;
@@ -193,6 +192,30 @@ public:
 		}
 
 
+	}*/
+	Matrix(int n, int m)
+	{
+		this->n=n;
+		this->m=m;
+		float* a=new float[n*m];
+		data=a;
+		int c1=1; int c2=1;
+		while(c1!=n+1 && c2!=m+1)
+		{
+			data[(((c1-1)*n+c2)-1)]=0;
+			if(c1==c2)
+				data[(((c1-1)*n+c2)-1)]=1;
+			c1++;
+			if(c1>n)
+			{
+				c1=1;
+				c2++;
+			}
+			if(c2>m)
+				break;
+		}
+
+
 	}
 	Matrix(const Matrix& a)
 	{
@@ -205,7 +228,7 @@ public:
 			this->data[i]=a.data[i];
 			i++;
 		}
-	
+	//cout<<"copy"<<endl;
 
 	}
 	Matrix& operator=(const Matrix& a)
@@ -221,6 +244,7 @@ public:
 			i++;
 
 		}
+		//cout<<"="<<endl;
 		return (*this);
 	}
 	~Matrix()
@@ -239,14 +263,17 @@ public:
 
 		}
 		float D=0;
-		if((n*m)==4)
+		/*if((n*m)==4)
 		{
 			float b1=data[0]*data[3];
 			float b2=data[1]*data[2];
 			D=b1-b2;
 			return D;
-		}
-	
+		}*/
+	if(n==1 && m==1)
+	{
+		return data[0];
+	}
 		
 		int c1=1; int c2=1;
 		while(c2!=m+1)
@@ -288,22 +315,24 @@ public:
 			c2++;
 		
 		}
+		
 		return D;
 	}
 	Matrix reverse()
 	{
 
-	
+
 		float x=0;
 		
 		Matrix b;
 		if(n!=m)
 		{
 			
-			cout<<"It is impossible.This matrix is not backwards1"<<endl;
+			
+			cout<<"It is impossible.This matrix is not backwards"<<endl;
 			return b;
 		}
-		if(n==2)
+		/*if(n==2)
 		{
 		
 			float b1=data[0]*data[3];
@@ -312,7 +341,7 @@ public:
 			if(x==0)
 			{
 				
-				cout<<"It is impossible.This matrix is not backwards2"<<endl;
+				cout<<"It is impossible.This matrix is not backwards"<<endl;
 				return b;
 			}
 			
@@ -321,8 +350,8 @@ public:
 			b.n=2;
 			b.data[0]=this->data[3];
 			b.data[3]=this->data[0];
-			b.data[1]=-this->data[1];
-			b.data[2]=-this->data[2];
+			b.data[1]=-(this->data[1]);
+			b.data[2]=-(this->data[2]);
 			
 
 			b=b*(1/x);
@@ -331,13 +360,13 @@ public:
 
 
 
-		}
+		}*/
 			
 			b.data=new float[n*m];
 			b.m=m;
 			b.n=n;
 		
-
+			
 		int c1=1; int c2=1;
 		while(c2!=m+1 && c1!=n+1)
 		{
@@ -364,6 +393,7 @@ public:
 					a1++;
 					a2=1;
 				}
+				
 			}
 			int a4;
 			if((c1+c2)%2==0)
@@ -378,11 +408,13 @@ public:
 			x=x+a4*data[(((c1-1)*n+c2)-1)]*a.determinant();
 			b.data[(((c2-1)*n+c1)-1)]=a4*a.determinant();
 			c2++;
-				if(c2>m)
+			
+			if(c2>m)
 				{
 					c1++;
 					c2=1;
 				}
+			
 				
 		
 		}
@@ -392,11 +424,14 @@ public:
 		{
 			Matrix k;
 			
-			cout<<"It is impossible.This matrix is not backwards3"<<endl;
+			
+			
+			cout<<"It is impossible.This matrix is not backwards"<<endl;
 			return k;
 
 
 		}
+		
 		b=b*(1/x);
 		cout<<x<<endl;
 		return b;
@@ -486,7 +521,18 @@ public:
 
 
 };
-Matrix* get_init(int m,int n)
+Matrix* get_init(int n,int m)
 {
-	return new Matrix(m,n);
+	return new Matrix(n,m);
+}
+
+
+void main()
+{
+	
+Matrix a(8,8);
+Matrix b=a.reverse();
+b.print(cout);
+
+	
 }
