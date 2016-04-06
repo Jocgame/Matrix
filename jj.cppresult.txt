@@ -4,7 +4,7 @@
 [ RUN      ] MatrixTest.GetNM
 [       OK ] MatrixTest.GetNM
 [ RUN      ] MatrixTest.Reverse
-It is impossible.This matrix is not backwards
+It is impossible.This matrix is not backwards3
 
 
 FAIL
