@@ -527,12 +527,4 @@ Matrix* get_init(int n,int m)
 }
 
 
-void main()
-{
-	
-Matrix a(8,8);
-Matrix b=a.reverse();
-b.print(cout);
 
-	
-}
