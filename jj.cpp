@@ -474,14 +474,13 @@ public:
 		o>>this->n;
 		cout<<"m=";
 		o>>this->m;
-		data=new float[n*m];
+		this->data=new float[n*m];
 		int i=0;
 		cout<<"Insert data."<<endl;
 		while(i!=n*m)
 		{
-			float a;
-			o>>a;
-			data[i]=a;
+			
+			o>>data[i];
 			i++;
 		}
 		return o;
