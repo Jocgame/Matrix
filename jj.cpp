@@ -515,13 +515,4 @@ Matrix* get_init(int n,int m)
 }
 
 
-void main()
-{
-	
-Matrix a(2,3);
-Matrix b=a.transpose();
-a.print(cout);
 
-b.print(cout);
-	
-}
