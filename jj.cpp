@@ -536,11 +536,7 @@ Matrix* get_init(int n,int m)
 	//Matrix b=a.transpose();
 	//b.print(cout);
 	//a.print(cout);
-	//int k=a.determinant();
-	
-
-
-}*/
+	//int k=a.determinant();*/
 
 
 
