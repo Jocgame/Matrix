@@ -19,7 +19,7 @@ w	virtual Matrix reverse();
 w	virtual Matrix transpose();
 w	virtual float determinant();
 w	virtual ostream& print(ostream& o);
-	virtual istream& read(istream& o);
+w	virtual istream& read(istream& o);
 w	virtual void set(int i, int j, float data);
 w	virtual float get(int i, int j);
 w	virtual int getN();
@@ -173,15 +173,15 @@ public:
 		while(i!=(n*m))
 		{
 			float a;
-			a=1;
+			a=rand()%3;
 
 			data[i]=a;
 			i++;
 		}
 
 
-	}
-	/*Matrix(int n, int m)
+	}/*
+Matrix(int n, int m)
 	{
 		this->n=n;
 		this->m=m;
@@ -202,9 +202,9 @@ public:
 			if(c2>m)
 				break;
 		}
+		*/
 
-
-	}*/
+	
 	Matrix(const Matrix& a)
 	{
 		this->m=a.m;
@@ -244,12 +244,12 @@ public:
 	}
 	float determinant()
 	{
-		if(n!=m)
+		/*if(n!=m)
 		{
 			cout<<"It is incorrect."<<endl;
 			return 0;
 
-		}
+		}*/
 		float D=0;
 		/*if((n*m)==4)
 		{
@@ -276,7 +276,10 @@ public:
 			int a3=0;
 			while(a1!=n+1 && a2!=m+1)
 			{
-
+				if(data[(((c1-1)*n+c2)-1)]==0)
+				{
+					goto next;
+				}
 
 				if(a1!=c1 && a2!=c2)
 				{
@@ -289,6 +292,8 @@ public:
 					a1++;
 					a2=1;
 				}
+				if(a1==m+1)
+					break;
 			}
 			int a4;
 			if((c1+c2)%2==0)
@@ -299,7 +304,9 @@ public:
 			{
 				a4=-1;
 			}
+
 			D=D+a4*data[(((c1-1)*n+c2)-1)]*a.determinant();
+			next:
 			c2++;
 		
 		}
@@ -392,8 +399,10 @@ public:
 			{
 				a4=-1;
 			}
-
+			if(data[(((c1-1)*n+c2)-1)]==0)
+				goto next;
 			x=x+a4*data[(((c1-1)*n+c2)-1)]*a.determinant();
+			next:
 			b.data[(((c2-1)*n+c1)-1)]=a4*a.determinant();
 			c2++;
 			
@@ -402,28 +411,19 @@ public:
 					c1++;
 					c2=1;
 				}
-			
-				
-		
+
 		}
 		
 		x=x/n;
 		if(x==0)
 		{
 			Matrix k;
-			
-			
-			
 			cout<<"It is impossible.This matrix is not backwards"<<endl;
 			return k;
-
-
-		}
-		
+		}		
 		b=b*(1/x);
-		cout<<x<<endl;
+		//cout<<x<<endl;
 		return b;
-
 
 	}
 	float get(int i, int j)
@@ -505,14 +505,42 @@ public:
 		return a;
 	}
 
-
-
-
 };
 Matrix* get_init(int n,int m)
 {
 	return new Matrix(n,m);
 }
+/*void main()
+{int i=0;
+	Matrix a(3,3);
+	//Matrix c(10,10);
+	float d=a.determinant();
+	Matrix b(3,2);
+	b.print(cout);
+	Matrix k=b.transpose();
+	k.print(cout);
+	//a.print(cout);
+	//cout<<d<<endl;
+	/*while(true)
+	{
+		Matrix b;
+		b=a.reverse();
+		float k=a.determinant();
+		b=a.transpose();
+		b=a*c+c*2;
+		i++;
+		if(i==10)
+			break;
+	}	*/
+	
+	//Matrix b=a.transpose();
+	//b.print(cout);
+	//a.print(cout);
+	//int k=a.determinant();
+	
+
+
+}*/
 
 
 
