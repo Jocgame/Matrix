@@ -428,12 +428,12 @@ Matrix(int n, int m)
 	}
 	float get(int i, int j)
 	{
-		return data[(((i-1)*m+j)-1)];
+		return data[i+j*n];
 	}
 	void set(int i, int j,float data)
 	{
 		
-		this->data[(((i-1)*m+j)-1)]=data;
+		this->data[i+j*n]=data;
 	}
 
 	int getN()
@@ -506,7 +506,7 @@ Matrix(int n, int m)
 	}
 
 };
-Matrix* get_init(int n,int m)
+Matrix* get_init(int m,int n)
 {
 	return new Matrix(n,m);
 }
