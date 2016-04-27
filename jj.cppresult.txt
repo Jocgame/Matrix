@@ -18,15 +18,19 @@
 0    0	    0	    0	
 \\\\\\\\\\\\\\\\\\\\\\\\
 cur.cpp:50: Failure
-Value of: round(c.get(i,i)+0.5)
+Value of: round(c.get(i,i))
   Actual: 0
 Expected: 1
 cur.cpp:50: Failure
-Value of: round(c.get(i,i)+0.5)
+Value of: round(c.get(i,i))
+  Actual: -0
+Expected: 1
+cur.cpp:50: Failure
+Value of: round(c.get(i,i))
   Actual: -2
 Expected: 1
 cur.cpp:50: Failure
-Value of: round(c.get(i,i)+0.5)
+Value of: round(c.get(i,i))
   Actual: 7.49343e+28
 Expected: 1
 cur.cpp:53: Failure
