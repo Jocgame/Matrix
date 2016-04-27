@@ -17,95 +17,99 @@
 -2    2	    2	    -1	
 0    0	    0	    0	
 \\\\\\\\\\\\\\\\\\\\\\\\
-cur.cpp:50: Failure
+index: 0
+cur.cpp:52: Failure
 Value of: round(c.get(i,i))
   Actual: 0
 Expected: 1
-cur.cpp:50: Failure
+index: 1
+cur.cpp:52: Failure
 Value of: round(c.get(i,i))
   Actual: -0
 Expected: 1
-cur.cpp:50: Failure
+index: 2
+cur.cpp:52: Failure
 Value of: round(c.get(i,i))
   Actual: -2
 Expected: 1
-cur.cpp:50: Failure
+index: 3
+cur.cpp:52: Failure
 Value of: round(c.get(i,i))
   Actual: 7.49343e+28
 Expected: 1
-cur.cpp:53: Failure
+cur.cpp:55: Failure
 Value of: round(c.get(i+1,i))
   Actual: 0
 Expected: -2
-cur.cpp:53: Failure
+cur.cpp:55: Failure
 Value of: round(c.get(i+1,i))
   Actual: 1
 Expected: -2
-cur.cpp:53: Failure
+cur.cpp:55: Failure
 Value of: round(c.get(i+1,i))
   Actual: 2
 Expected: -2
-cur.cpp:55: Failure
+cur.cpp:57: Failure
 Value of: round(c.get(i+2,i))
   Actual: -1
 Expected: 1
-cur.cpp:55: Failure
+cur.cpp:57: Failure
 Value of: round(c.get(i+2,i))
   Actual: 2
 Expected: 1
 [  FAILED  ] MatrixTest.Reverse
 [ RUN      ] MatrixTest.Transpose
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 7
 Expected: (int)(cc++)
 Which is: 1
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 1
 Expected: (int)(cc++)
 Which is: 2
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 2
 Expected: (int)(cc++)
 Which is: 3
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 1
 Expected: (int)(cc++)
 Which is: 4
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 8
 Expected: (int)(cc++)
 Which is: 5
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 5
 Expected: (int)(cc++)
 Which is: 6
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 3
 Expected: (int)(cc++)
 Which is: 7
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 2
 Expected: (int)(cc++)
 Which is: 8
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 7
 Expected: (int)(cc++)
 Which is: 9
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 1
 Expected: (int)(cc++)
 Which is: 10
-cur.cpp:76: Failure
+cur.cpp:78: Failure
 Value of: (int)(c.get(i,j)+0.5)
   Actual: 4
 Expected: (int)(cc++)
